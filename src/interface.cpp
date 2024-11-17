@@ -3,12 +3,12 @@
 #include <mfreadwrite.h>
 
 #define ESCAPI_DEFINITIONS_ONLY
-#include "escapi.h"
+#include "escapi/escapi.h"
 
-#include "conversion.h"
-#include "capture.h"
-#include "scopedrelease.h"
-#include "choosedeviceparam.h"
+#include "escapi/conversion.h"
+#include "escapi/capture.h"
+#include "escapi/scopedrelease.h"
+#include "escapi/choosedeviceparam.h"
 
 #define MAXDEVICES 16
 
@@ -16,6 +16,10 @@ struct SimpleCapParams gParams[MAXDEVICES];
 CaptureClass *gDevice[MAXDEVICES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 int gDoCapture[MAXDEVICES];
 int gOptions[MAXDEVICES];
+
+#pragma comment(lib, "Mf.lib")
+#pragma comment(lib, "Mfplat.lib")
+#pragma comment(lib, "mfuuid.lib")
 
 
 void CleanupDevice(int aDevice)

@@ -1,3 +1,6 @@
+#pragma once
+
+
 /* Extremely Simple Capture API */
 
 struct SimpleCapParams
@@ -103,18 +106,45 @@ typedef int (*initCaptureWithOptionsProc)(unsigned int deviceno, struct SimpleCa
 #define CAPTURE_OPTIONS_MASK (CAPTURE_OPTION_RAWDATA) 
 
 
-#ifndef ESCAPI_DEFINITIONS_ONLY
-extern countCaptureDevicesProc countCaptureDevices;
-extern initCaptureProc initCapture;
-extern deinitCaptureProc deinitCapture;
-extern doCaptureProc doCapture;
-extern isCaptureDoneProc isCaptureDone;
-extern getCaptureDeviceNameProc getCaptureDeviceName;
-extern ESCAPIVersionProc ESCAPIVersion;
-extern getCapturePropertyValueProc getCapturePropertyValue;
-extern getCapturePropertyAutoProc getCapturePropertyAuto;
-extern setCapturePropertyProc setCaptureProperty;
-extern getCaptureErrorLineProc getCaptureErrorLine;
-extern getCaptureErrorCodeProc getCaptureErrorCode;
-extern initCaptureWithOptionsProc initCaptureWithOptions;
-#endif
+//#ifndef ESCAPI_DEFINITIONS_ONLY
+//extern countCaptureDevicesProc countCaptureDevices;
+//extern initCaptureProc initCapture;
+//extern deinitCaptureProc deinitCapture;
+//extern doCaptureProc doCapture;
+//extern isCaptureDoneProc isCaptureDone;
+//extern getCaptureDeviceNameProc getCaptureDeviceName;
+//extern ESCAPIVersionProc ESCAPIVersion;
+//extern getCapturePropertyValueProc getCapturePropertyValue;
+//extern getCapturePropertyAutoProc getCapturePropertyAuto;
+//extern setCapturePropertyProc setCaptureProperty;
+//extern getCaptureErrorLineProc getCaptureErrorLine;
+//extern getCaptureErrorCodeProc getCaptureErrorCode;
+//extern initCaptureWithOptionsProc initCaptureWithOptions;
+//#endif
+
+
+void CleanupDevice(int device);
+int CountCaptureDevices();
+void GetCaptureDeviceName(int deviceno, char *namebuffer, int bufferlength);
+void CheckForFail(int device);
+int GetErrorCode(int device);
+int GetErrorLine(int device);
+float GetProperty(int device, int prop);
+int GetPropertyAuto(int device, int prop);
+int SetProperty(int device, int prop, float value, int autoval);
+int initCapture(unsigned int deviceno, struct SimpleCapParams *aParams);
+void doCapture(unsigned int deviceno);
+int isCaptureDone(unsigned int deviceno);
+void deinitCapture(unsigned int deviceno);
+int ESCAPIVersion();
+int ESCAPIDLLVersion();
+float getCapturePropertyValue(unsigned int deviceno, int prop);
+int getCapturePropertyAuto(unsigned int deviceno, int prop);
+int setCaptureProperty(unsigned int deviceno, int prop, float value, int autoval);
+int getCaptureErrorLine(unsigned int deviceno);
+int getCaptureErrorCode(unsigned int deviceno);
+int initCaptureWithOptions(unsigned int deviceno, struct SimpleCapParams *aParams, unsigned int aOptions);
+
+
+
+

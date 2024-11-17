@@ -10,13 +10,18 @@
 #include <math.h>
 
 #define ESCAPI_DEFINITIONS_ONLY
-#include "escapi.h"
+#include "escapi/escapi.h"
 
-#include "conversion.h"
-#include "capture.h"
-#include "scopedrelease.h"
-#include "videobufferlock.h"
-#include "choosedeviceparam.h"
+#include "escapi/conversion.h"
+#include "escapi/capture.h"
+#include "escapi/scopedrelease.h"
+#include "escapi/videobufferlock.h"
+#include "escapi/choosedeviceparam.h"
+
+
+#pragma comment(lib, "Mfreadwrite.lib")
+#pragma comment(lib, "Shlwapi.lib")
+
 
 extern struct SimpleCapParams gParams[];
 extern int gDoCapture[];

@@ -1,5 +1,5 @@
 #include <mfapi.h>
-#include "videobufferlock.h"
+#include "escapi/videobufferlock.h"
 
 VideoBufferLock::VideoBufferLock(IMFMediaBuffer *aBuffer) : m2DBuffer(NULL), mLocked(FALSE)
 {
